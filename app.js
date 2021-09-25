@@ -23,9 +23,7 @@ const server = http.createServer(async(req, res) => {
             //grabing id from url after third slash
             const id = req.url.split("/")[3];
             const todo = await new Todo().getTodo(id);
-            res.writeHead(200, {
-                "Content-Type": "application/json"
-            });
+            res.writeHead(200, { "Content-Type": "application/json" });
             res.end(JSON.stringify(todo));
         } catch (error) {
             res.writeHead(404, { "Content-Type": "application/json" });
@@ -34,11 +32,11 @@ const server = http.createServer(async(req, res) => {
         ///api/todos/:id : DELETE
     } else if (
         req.url.match(/\/api\/todos\/([0-9]+)/) &&
-        req.match === "DELETE"
+        req.method === "DELETE"
     ) {
         try {
             const id = req.url.split("/")[3];
-            let message = await new Todo.deleteTodo(id);
+            let message = await new Todo().deleteTodo(id);
             res.writeHead(200, { "content-Type": "apllication/json" });
             res.end(JSON.stringify({ message }));
         } catch (error) {
@@ -63,7 +61,7 @@ const server = http.createServer(async(req, res) => {
     } else if (req.url === "/api/todos" && req.method === "POST") {
         let todo_data = await getReqData(req);
         let todo = await new Todo().createTodo(JSON.parse(todo_data));
-        res.writeHead(200, { "Content-Type": "applicatioin/json" });
+        res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(todo));
     } else {
         //if requested route is NOT present

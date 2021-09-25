@@ -22,16 +22,15 @@ class Controller {
      */
 
     getTodo = async(id) => {
+
         return new Promise((resolve, reject) => {
-            let todo = data.find((id) => todo.id === parseInt(id));
-            if (todo) {
-                resolve(todo);
-            } else {
-                reject(`No Todos found with id ${id}.`);
+            let todo = data.find((todo) => todo.id === parseInt(id));
+            if (!todo) {
+                reject(`No todo found with id ${id} to be found.`);
             }
+            resolve(todo);
         });
     };
-
     /**
      * async function createTodo is takeing a single parameter
      * 'todoData' to which is appended with an id to generate
@@ -70,6 +69,7 @@ class Controller {
      */
 
     deleteTodo = async(id) => {
+
         return new Promise((resolve, reject) => {
             let todo = data.find((todo) => todo.id === parseInt(id));
             if (!todo) {

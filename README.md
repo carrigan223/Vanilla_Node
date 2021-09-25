@@ -7,3 +7,32 @@ This is a simple node.js API built with vanilla JavaScript without the use of fr
 ## Routes Available
 
 - /api/todos `GET` *route to Read ALL todos*
+- /api/todos/:id `GET` *route to Read a SINGLE todo with matching id*
+- /api/todos `POST` *route to Post a new todo, expects req body to have data to populate todo object*
+- /api/todos/:id `PATCH` *route to Update a todo status(complete: true or false) with matching id*
+- /api/todos/:id `DELETE` *route to Delete a todo with matching id*
+
+### req.body example
+
+`{
+	"title": "Tsk To Be Completed",
+    "description": "Task Description",
+    "completed": false
+}`
+
+---
+
+## Installation Locally
+
+1. Clone github repository
+`gh repo clone carrigan223/Vanilla_Node.`
+
+2.Access parent directory 
+`cd vanilla_node`
+
+3. From the command line run
+`npm run dev`
+
+4.Using Postman or Insomnia Route operations can be tested at
+`http://localhost:5000/api/todos`
+
