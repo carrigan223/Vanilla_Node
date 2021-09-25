@@ -7,6 +7,7 @@ This is a simple node.js API built with vanilla JavaScript without the use of fr
 ## Routes Available
 
 - /api/todos `GET` *route to Read ALL todos*
+- /api/todos\completed `GET` *route to Read ALL todos which have the completed property set to true*
 - /api/todos/:id `GET` *route to Read a SINGLE todo with matching id*
 - /api/todos `POST` *route to Post a new todo, expects req body to have data to populate todo object*
 - /api/todos/:id `PATCH` *route to Update a todo status(complete: true or false) with matching id*
