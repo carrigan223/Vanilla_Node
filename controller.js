@@ -38,10 +38,10 @@ class Controller {
      * a new todo object
      */
 
-    creatTodo = async(todoData) => {
+    createTodo = async(todoData) => {
         return new Promise((resolve, _) => {
             let newTodo = {
-                id: Math.floor(4 + Math.random() * 10),
+                id: Math.floor(Math.random() + Math.random() * 100 + 10),
                 ...todoData
             };
             resolve(newTodo);
