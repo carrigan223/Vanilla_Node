@@ -1,2 +1,1 @@
-# H1
-Simple Node.js Rest API
+# Simple Node.js Rest API
