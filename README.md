@@ -15,7 +15,7 @@ This is a simple node.js API built with vanilla JavaScript without the use of fr
 ### req.body example
 
 `{
-	"title": "Tsk To Be Completed",
+	"title": "Task To Be Completed",
     "description": "Task Description",
     "completed": false
 }`
@@ -24,13 +24,13 @@ This is a simple node.js API built with vanilla JavaScript without the use of fr
 
 ## Installation Locally
 
-1. Clone github repository
+1.Clone github repository
 `gh repo clone carrigan223/Vanilla_Node.`
 
 2.Access parent directory 
-`cd vanilla_node`
+`cd Vanilla_Node.`
 
-3. From the command line run
+3.From the command line run
 `npm run dev`
 
 4.Using Postman or Insomnia Route operations can be tested at
