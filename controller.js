@@ -22,13 +22,33 @@ class Controller {
      */
 
     getTodo = async(id) => {
-
         return new Promise((resolve, reject) => {
             let todo = data.find((todo) => todo.id === parseInt(id));
             if (!todo) {
                 reject(`No todo found with id ${id} to be found.`);
             }
             resolve(todo);
+        });
+    };
+
+    /**
+     * async function getCompletedTodos iterates over the array of data
+     * to retrieve todos with the property of completed set to `true` which are
+     * then returned as a new data array
+     */
+
+    getCompletedTodos = async() => {
+        return new Promise((resolve, reject) => {
+            const completedTodos = [];
+            data.map((todo) => {
+                if (todo.completed === true) {
+                    completedTodos.push(todo);
+                }
+            });
+            if (completedTodos.length <= 0) {
+                reject(`No todo found to have been completed.`);
+            }
+            resolve(completedTodos);
         });
     };
     /**
@@ -69,7 +89,6 @@ class Controller {
      */
 
     deleteTodo = async(id) => {
-
         return new Promise((resolve, reject) => {
             let todo = data.find((todo) => todo.id === parseInt(id));
             if (!todo) {

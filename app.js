@@ -63,6 +63,10 @@ const server = http.createServer(async(req, res) => {
         let todo = await new Todo().createTodo(JSON.parse(todo_data));
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(todo));
+    } else if (req.url === "/api/todos/completed" && req.method === "GET") {
+        let completed_todos = await new Todo().getCompletedTodos();
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(completed_todos));
     } else {
         //if requested route is NOT present
         res.writeHead(404, { "Content-Type": "application/json" });
