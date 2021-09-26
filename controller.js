@@ -2,9 +2,9 @@
  * Controller.js contains the controller class which will manage
  * the functionality and logic of our apllication
  */
-
-const { resolve } = require("path/posix");
-const data = require("./data.js");
+//using fs to read, write, and persist data in data.json file
+const fs = require("fs");
+const data = JSON.parse(fs.readFileSync("data.json", "utf8"));
 
 class Controller {
     /**
@@ -63,6 +63,14 @@ class Controller {
                 id: Math.floor(Math.random() + Math.random() * 100 + 10),
                 ...todoData
             };
+            data.push(newTodo);
+            fs.writeFile("data.json", JSON.stringify(data), (err) => {
+                // Checking for errors
+                if (err) throw err;
+
+                console.log("Done writing"); // Success
+            });
+
             resolve(newTodo);
         });
     };
@@ -79,6 +87,12 @@ class Controller {
                 reject(`No todo found with id ${id} to be updated.`);
             }
             todo.completed = true;
+            fs.writeFile("data.json", JSON.stringify(data), (err) => {
+                // Checking for errors
+                if (err) throw err;
+
+                console.log("Done writing"); // Success
+            });
             resolve(todo);
         });
     };
@@ -94,6 +108,17 @@ class Controller {
             if (!todo) {
                 reject(`No todo found with id ${id} to be deleted.`);
             }
+            for (let i = 0; data.length > i; i++) {
+                if (data[i].id === parseInt(id)) {
+                    data.splice(i, 1);
+                }
+            }
+            fs.writeFile("data.json", JSON.stringify(data), (err) => {
+                // Checking for errors
+                if (err) throw err;
+
+                console.log("Done writing"); // Success
+            });
             resolve("Todo deleted successfully");
         });
     };
