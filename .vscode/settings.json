@@ -1,3 +1,6 @@
 {
-  "workbench.colorTheme": "Palenight Italic"
+  "workbench.colorTheme": "Palenight Italic",
+  "eslint.workingDirectories": [
+  
+  ]
 }
