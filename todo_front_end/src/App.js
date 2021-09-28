@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { AppContainer,TodoSection } from "./AppStyles";
+import { AppContainer, TodoSection } from "./AppStyles";
 import axios from "axios";
 import styled from "styled-components";
 import Header from "./components/headerComponent/header";
@@ -9,6 +9,7 @@ axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const [date, setDate] = useState("");
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
@@ -43,26 +44,33 @@ const App = () => {
       });
   };
 
+  const dateSetAndFormat = (msDate) => {
+    const convertedDate = new Date(msDate);
+    const stringDate = convertedDate.toString();
+    setDate(stringDate.substr(0, 15));
+  };
+
   useEffect(() => {
     fetchTodos();
     fetchUsers();
+    dateSetAndFormat(Date.now());
   }, []);
 
-  const AppContainer = styled.div`
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  `;
-
   console.log(todos);
-  console.log(users);
+  console.log(date);
 
   return (
     <AppContainer>
-      <Header />
-      {loading ? <div>Loading...</div>:<TodoSection>{todos.map((todo) => (
-        <TodoCard todo={todo} userObjects={users} />
-      ))}</TodoSection>}
+      <Header date={date} />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <TodoSection>
+          {todos.map((todo) => (
+            <TodoCard todo={todo} userObjects={users} />
+          ))}
+        </TodoSection>
+      )}
     </AppContainer>
   );
 };

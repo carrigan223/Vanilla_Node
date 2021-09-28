@@ -28,4 +28,10 @@ const AppTitle = styled.h1`
   position: fixed;
 `;
 
-export { AppTitle, HeaderContainer };
+const TodaysDate = styled.span`
+  margin-left: auto;
+  margin-bottom: auto;
+  padding: 10px;
+`;
+
+export { AppTitle, HeaderContainer,TodaysDate };
