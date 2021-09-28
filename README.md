@@ -31,11 +31,27 @@ This is a simple node.js API built with vanilla JavaScript without the use of fr
 `gh repo clone carrigan223/Vanilla_Node.`
 
 2.Access parent directory 
-`cd Vanilla_Node.`
+`cd Vanilla_Node`
 
 3.From the command line run
+`npm install`
 `npm run dev`
 
 4.Using Postman or Insomnia Route operations can be tested at
 `http://localhost:5000/api/todos`
+
+## For Usage with built in front end
+
+1.With back end application started move into front end directory
+`cd todo_front_end`
+
+2.Install Dependencies
+`yarn install`
+
+3.After installing dependencies and with back end started from the command line run
+`yarn start`
+
+4.Application should now be running on local server displaying data provided from Node API
+
+
 
