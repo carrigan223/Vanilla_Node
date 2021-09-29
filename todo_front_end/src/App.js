@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { AppContainer, TodoSection } from "./AppStyles";
 import axios from "axios";
+import Footer from "./components/footerComponent/footer";
 import styled from "styled-components";
 import Header from "./components/headerComponent/header";
 import TodoCard from "./components/todoCardComponent/todoCard";
@@ -44,6 +45,13 @@ const App = () => {
       });
   };
 
+  /**
+   *
+   * @param {date in milliseconds} msDate
+   * dateSetAndFormat takes in a a value of the
+   * date in milliseconds to convert to a month year day
+   * format
+   */
   const dateSetAndFormat = (msDate) => {
     const convertedDate = new Date(msDate);
     const stringDate = convertedDate.toString();
@@ -67,10 +75,11 @@ const App = () => {
       ) : (
         <TodoSection>
           {todos.map((todo) => (
-            <TodoCard todo={todo} userObjects={users} />
+            <TodoCard todo={todo} userObjects={users} key={todo.id} />
           ))}
         </TodoSection>
       )}
+      <Footer />
     </AppContainer>
   );
 };

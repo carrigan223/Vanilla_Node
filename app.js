@@ -7,9 +7,24 @@ const { getReqData } = require("./utils");
 const PORT = process.env.PORT || 5000;
 
 const server = http.createServer(async (req, res) => {
+  //setting headers to allow cross dev server development DO NOT LEAVE WHEN DEPLOYED
+  //using a wildcard to allow everything not prod ready
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "OPTIONS, POST, GET, DELETE, PATCH",
+    "Access-Control-Max-Age": 2592000 // 30 days in milliseconds
+  };
+
+  //catching the pre-flight OPTIONS response
+  //and and responding to authenticate the next request
+  if (req.method === "OPTIONS") {
+    res.writeHead(204, headers);
+    res.end();
+    return;
+  }
   // checking the request route
   ///api/users : GET route to retrieve all users
-  if (req.url === "/api/users" && req.method === "GET") {
+  else if (req.url === "/api/users" && req.method === "GET") {
     const users = await new UserController().getUsers();
     //setting response header
     res.writeHead(200, { "Content-Type": "application/json" });
@@ -56,7 +71,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const id = req.url.split("/")[3];
       let message = await new TodoController().deleteTodo(id);
-      res.writeHead(200, { "content-Type": "apllication/json" });
+      res.writeHead(200, { "Content-Type": "application/json" });
       res.end(JSON.stringify({ message }));
     } catch (error) {
       res.writeHead(404, { "Content-Type": "application/json" });

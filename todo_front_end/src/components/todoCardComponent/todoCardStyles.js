@@ -2,6 +2,30 @@ import styled from "styled-components";
 import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { BiChevronsDown, BiChevronsUp } from "react-icons/bi";
 
+const DeleteButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const DeleteButton = styled.button`
+  font-family: "Abril Fatface";
+  font-size: 1rem;
+  background: black;
+  border-radius: 100%;
+  color: white;
+  -webkit-text-stroke: 1px white;
+  border: none;
+  margin: 15px;
+
+  :hover {
+    background: darkred;
+    box-shadow: 2px 3px 3px grey;
+    color: black;
+    -webkit-text-stroke: none;
+  }
+`;
+
 const TodoCardContainer = styled.div`
   display: flex;
   text-align: center;
@@ -82,5 +106,7 @@ export {
   ExpandButton,
   DropDownButtonContainer,
   ExpandedDescriptionContainer,
-  CollapseButton
+  CollapseButton,
+  DeleteButton,
+  DeleteButtonContainer
 };

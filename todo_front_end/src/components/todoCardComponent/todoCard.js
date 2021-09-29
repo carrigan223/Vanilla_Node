@@ -7,8 +7,11 @@ import {
   ExpandButton,
   DropDownButtonContainer,
   ExpandedDescriptionContainer,
-  CollapseButton
+  CollapseButton,
+  DeleteButton,
+  DeleteButtonContainer
 } from "./todoCardStyles";
+import axios from "axios";
 
 /**
  *
@@ -21,6 +24,23 @@ const TodoCard = ({
   userObjects
 }) => {
   const [shown, setShown] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const deleteTodo = (id) => {
+    setLoading(true);
+    const stringedId = id.toString();
+    const apiUrl = "http://localhost:5000/api/todos".concat("/", stringedId);
+    axios
+      .delete(apiUrl)
+      .then((res) => {})
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   const showDescription = () => {
     setShown(!shown);
@@ -28,6 +48,9 @@ const TodoCard = ({
   return (
     <div>
       <TodoCardContainer>
+        <DeleteButtonContainer>
+          <DeleteButton onClick={() => deleteTodo(id)}>X</DeleteButton>
+        </DeleteButtonContainer>
         <CardHeader>{title}</CardHeader>
         {shown ? (
           <ExpandedDescriptionContainer>

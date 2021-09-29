@@ -12,6 +12,7 @@ class TodoController {
    * all todo objects
    */
   getTodos = async () => {
+    console.log(data);
     return new Promise((resolve, _) => resolve(data));
   };
 
@@ -64,7 +65,7 @@ class TodoController {
         ...todoData
       };
       data.push(newTodo);
-      fs.writeFile("data.json", JSON.stringify(data), (err) => {
+      fs.writeFile("data/todos.json", JSON.stringify(data), (err) => {
         // Checking for errors
         if (err) throw err;
 
@@ -87,7 +88,7 @@ class TodoController {
         reject(`No todo found with id ${id} to be updated.`);
       }
       todo.completed = true;
-      fs.writeFile("data.json", JSON.stringify(data), (err) => {
+      fs.writeFile("data/todos.json", JSON.stringify(data), (err) => {
         // Checking for errors
         if (err) throw err;
 
@@ -113,7 +114,7 @@ class TodoController {
           data.splice(i, 1);
         }
       }
-      fs.writeFile("data.json", JSON.stringify(data), (err) => {
+      fs.writeFile("data/todos.json", JSON.stringify(data), (err) => {
         // Checking for errors
         if (err) throw err;
 
