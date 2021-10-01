@@ -9,7 +9,8 @@ import {
   ExpandedDescriptionContainer,
   CollapseButton,
   DeleteButton,
-  DeleteButtonContainer
+  DeleteButtonContainer,
+  ChangeCompleteButton
 } from "./todoCardStyles";
 import axios from "axios";
 
@@ -42,32 +43,57 @@ const TodoCard = ({
       });
   };
 
+  const completeTodo = (id) => {
+    setLoading(true);
+    const stringedId = id.toString();
+    const apiUrl = "http://localhost:5000/api/todos".concat("/", stringedId);
+    axios
+      .post(apiUrl)
+      .then((res) => {})
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+        console.log("loading is :");
+      });
+
+    console.log(apiUrl);
+    console.log(loading);
+  };
+
   const showDescription = () => {
     setShown(!shown);
   };
   return (
     <div>
-      <TodoCardContainer>
-        <DeleteButtonContainer>
-          <DeleteButton onClick={() => deleteTodo(id)}>X</DeleteButton>
-        </DeleteButtonContainer>
-        <CardHeader>{title}</CardHeader>
-        {shown ? (
-          <ExpandedDescriptionContainer>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <TodoCardContainer>
+          <DeleteButtonContainer>
+            <DeleteButton onClick={() => deleteTodo(id)}>X</DeleteButton>
+          </DeleteButtonContainer>
+          <CardHeader>{title}</CardHeader>
+          {shown ? (
+            <ExpandedDescriptionContainer>
+              <DropDownButtonContainer onClick={showDescription} type="button">
+                <CollapseButton />
+              </DropDownButtonContainer>
+              <span>{description}</span>
+            </ExpandedDescriptionContainer>
+          ) : (
             <DropDownButtonContainer onClick={showDescription} type="button">
-              <CollapseButton />
+              <ExpandButton />
             </DropDownButtonContainer>
-            <span>{description}</span>
-          </ExpandedDescriptionContainer>
-        ) : (
-          <DropDownButtonContainer onClick={showDescription} type="button">
-            <ExpandButton />
-          </DropDownButtonContainer>
-        )}
-        <span>Date To Be Completed: {due_date}</span>
-        <span style={{ display: "flex" }}></span>
-        <div>{completed ? <Checkmark /> : <Exclamation />}</div>
-      </TodoCardContainer>
+          )}
+          <span>Date To Be Completed: {due_date}</span>
+          <span style={{ display: "flex" }}></span>
+          <ChangeCompleteButton onClick={() => completeTodo(id)}>
+            <div>{completed ? <Checkmark /> : <Exclamation />}</div>
+          </ChangeCompleteButton>
+        </TodoCardContainer>
+      )}
     </div>
   );
 };

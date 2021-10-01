@@ -64,7 +64,11 @@ const Checkmark = styled(FaCheckCircle)`
   box-shadow: 2px 2px 10px black;
   border-radius: 33px;
   border: 3px solid white;
-  margin: 10px;
+
+  :hover {
+    box-shadow: 2px 2px 10px green;
+
+  }
 `;
 
 const Exclamation = styled(FaExclamationCircle)`
@@ -72,7 +76,10 @@ const Exclamation = styled(FaExclamationCircle)`
   box-shadow: 2px 2px 10px black;
   border-radius: 33px;
   border: 3px solid white;
-  margin: 10px;
+  :hover {
+    box-shadow: 2px 2px 10px red;
+
+  }
 `;
 
 const ExpandButton = styled(BiChevronsDown)`
@@ -98,6 +105,16 @@ const ExpandedDescriptionContainer = styled.div`
   flex-direction: column;
 `;
 
+const ChangeCompleteButton = styled.button`
+  border: none;
+  background: transparent;
+  margin-bottom: 10px;
+  border-radius: 33px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export {
   TodoCardContainer,
   CardHeader,
@@ -108,5 +125,6 @@ export {
   ExpandedDescriptionContainer,
   CollapseButton,
   DeleteButton,
-  DeleteButtonContainer
+  DeleteButtonContainer,
+  ChangeCompleteButton
 };

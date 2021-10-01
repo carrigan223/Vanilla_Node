@@ -11,7 +11,7 @@ const server = http.createServer(async (req, res) => {
   //using a wildcard to allow everything not prod ready
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "OPTIONS, POST, GET, DELETE, PATCH",
+    "Access-Control-Allow-Methods": "*",
     "Access-Control-Max-Age": 2592000 // 30 days in milliseconds
   };
 
@@ -80,7 +80,7 @@ const server = http.createServer(async (req, res) => {
     ///api/todos/:id : UPDATE
   } else if (
     req.url.match(/\/api\/todos\/([0-9]+)/) &&
-    req.method === "PATCH"
+    req.method === "POST"
   ) {
     try {
       const id = req.url.split("/")[3];

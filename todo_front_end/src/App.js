@@ -73,7 +73,7 @@ const App = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <TodoSection>
+        <TodoSection onClick={() => fetchTodos()}>
           {todos.map((todo) => (
             <TodoCard todo={todo} userObjects={users} key={todo.id} />
           ))}

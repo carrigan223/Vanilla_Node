@@ -87,7 +87,11 @@ class TodoController {
       if (!todo) {
         reject(`No todo found with id ${id} to be updated.`);
       }
-      todo.completed = true;
+      if (todo.completed === true) {
+        todo.completed = false;
+      } else {
+        todo.completed = true;
+      }
       fs.writeFile("data/todos.json", JSON.stringify(data), (err) => {
         // Checking for errors
         if (err) throw err;
