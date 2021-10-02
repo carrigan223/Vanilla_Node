@@ -14,7 +14,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   font-family: "Abril Fatface";
   font-size: 1.25rem;
   border-bottom: 3px solid black;

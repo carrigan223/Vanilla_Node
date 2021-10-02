@@ -50,7 +50,7 @@ const TodoCardContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 27vw;
+    width: 20vw;
     margin: 15px;
   }
 `;

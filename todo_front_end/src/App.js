@@ -67,19 +67,58 @@ const App = () => {
   console.log(todos);
   console.log(date);
 
+  const SideBarContainer = styled.div`
+    @media (min-width: 768px) {
+      border: 1px solid red;
+      width: 20%;
+      margin-right: auto;
+      height: 85vh;
+    }
+  `;
+
+  const TodoCardViewBody = styled.div`
+    display: flex;
+  `;
+
+  const AddTodoFormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+
+    > input {
+      margin: 15px;
+      border-radius: 6px;
+      height: 1.5rem;
+      width: 70%;
+      border: 1px solid grey;
+    }
+  `;
+
   return (
     <AppContainer>
       <Header date={date} />
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <TodoSection onClick={() => fetchTodos()}>
-          {todos.map((todo) => (
-            <TodoCard todo={todo} userObjects={users} key={todo.id} />
-          ))}
-        </TodoSection>
+        <TodoCardViewBody>
+          <SideBarContainer>
+            <h2>Add To A Togo</h2>
+            <AddTodoFormContainer>
+              <input></input>
+              <input></input>
+              <input></input>
+              <input></input>
+            </AddTodoFormContainer>
+          </SideBarContainer>
+          <TodoSection onClick={() => fetchTodos()}>
+            {todos.map((todo) => (
+              <TodoCard todo={todo} userObjects={users} key={todo.id} />
+            ))}
+          </TodoSection>
+        </TodoCardViewBody>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </AppContainer>
   );
 };
