@@ -13,7 +13,12 @@ class TodoController {
    */
   getTodos = async () => {
     console.log(data);
-    return new Promise((resolve, _) => resolve(data));
+    return new Promise((resolve, reject) => {
+      if (!data) {
+        reject("No Todos Found");
+      }
+      resolve(data);
+    });
   };
 
   /**

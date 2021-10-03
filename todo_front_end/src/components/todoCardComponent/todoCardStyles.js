@@ -53,6 +53,10 @@ const TodoCardContainer = styled.div`
     width: 20vw;
     margin: 15px;
   }
+
+  @media (max-width: 768px) {
+    width: 80vw;
+  }
 `;
 
 const CardHeader = styled.h2`
@@ -67,7 +71,6 @@ const Checkmark = styled(FaCheckCircle)`
 
   :hover {
     box-shadow: 2px 2px 10px green;
-
   }
 `;
 
@@ -78,7 +81,6 @@ const Exclamation = styled(FaExclamationCircle)`
   border: 3px solid white;
   :hover {
     box-shadow: 2px 2px 10px red;
-
   }
 `;
 

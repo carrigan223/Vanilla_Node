@@ -55,45 +55,40 @@ const TodoCard = ({
       })
       .finally(() => {
         setLoading(false);
-        console.log("loading is :");
       });
 
     console.log(apiUrl);
-    console.log(loading);
+    console.log(userObjects);
   };
 
-  const showDescription = () => {
+  const showAndHideDescription = () => {
     setShown(!shown);
   };
   return (
     <div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <TodoCardContainer>
-          <DeleteButtonContainer>
-            <DeleteButton onClick={() => deleteTodo(id)}>X</DeleteButton>
-          </DeleteButtonContainer>
-          <CardHeader>{title}</CardHeader>
-          {shown ? (
-            <ExpandedDescriptionContainer>
-              <DropDownButtonContainer onClick={showDescription} type="button">
-                <CollapseButton />
-              </DropDownButtonContainer>
-              <span>{description}</span>
-            </ExpandedDescriptionContainer>
-          ) : (
-            <DropDownButtonContainer onClick={showDescription} type="button">
-              <ExpandButton />
+      <TodoCardContainer>
+        <DeleteButtonContainer>
+          <DeleteButton onClick={() => deleteTodo(id)}>X</DeleteButton>
+        </DeleteButtonContainer>
+        <CardHeader>{title}</CardHeader>
+        {shown ? (
+          <ExpandedDescriptionContainer>
+            <DropDownButtonContainer onClick={showAndHideDescription} type="button">
+              <CollapseButton />
             </DropDownButtonContainer>
-          )}
-          <span>Date To Be Completed: {due_date}</span>
-          <span style={{ display: "flex" }}></span>
-          <ChangeCompleteButton onClick={() => completeTodo(id)}>
-            <div>{completed ? <Checkmark /> : <Exclamation />}</div>
-          </ChangeCompleteButton>
-        </TodoCardContainer>
-      )}
+            <span>{description}</span>
+          </ExpandedDescriptionContainer>
+        ) : (
+          <DropDownButtonContainer onClick={showAndHideDescription} type="button">
+            <ExpandButton />
+          </DropDownButtonContainer>
+        )}
+        <span>Date To Be Completed: {due_date}</span>
+        <span style={{ display: "flex" }}></span>
+        <ChangeCompleteButton onClick={() => completeTodo(id)}>
+          <div>{completed ? <Checkmark /> : <Exclamation />}</div>
+        </ChangeCompleteButton>
+      </TodoCardContainer>
     </div>
   );
 };
