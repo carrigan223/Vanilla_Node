@@ -23,6 +23,7 @@ const DeleteButton = styled.button`
     box-shadow: 2px 3px 3px grey;
     color: black;
     -webkit-text-stroke: none;
+    cursor: pointer;
   }
 `;
 

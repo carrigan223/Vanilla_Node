@@ -8,7 +8,7 @@ const HeaderContainer = styled.header`
     rgba(190, 236, 237, 1) 100%
   );
   color: black;
-  box-shadow: 0px 7px 70px lightgray;
+  box-shadow: 0px 7px 30px lightgray;
   width: 100vw;
   height: 14vh;
   display: flex;
@@ -24,8 +24,12 @@ const HeaderContainer = styled.header`
 
 const AppTitle = styled.h1`
   margin: 0;
-  text-shadow: 2px 2px 25px grey;
+  font-size: 4rem;
+  text-shadow: 5px 4px 3px grey;
   position: fixed;
+  letter-spacing: 13px;
+  color: white;
+  -webkit-text-stroke: 0.5px grey;
 `;
 
 const TodaysDate = styled.span`
@@ -34,4 +38,4 @@ const TodaysDate = styled.span`
   padding: 10px;
 `;
 
-export { AppTitle, HeaderContainer,TodaysDate };
+export { AppTitle, HeaderContainer, TodaysDate };

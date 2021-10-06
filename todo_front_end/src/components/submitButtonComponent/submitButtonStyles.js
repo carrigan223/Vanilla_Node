@@ -17,6 +17,7 @@ const StyledSubmitButton = styled.button`
 
   :hover {
     box-shadow: 7px 7px 10px black;
+    cursor: pointer;
 
   }
 `;
