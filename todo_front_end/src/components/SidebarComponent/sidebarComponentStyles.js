@@ -5,20 +5,16 @@ const StyledSubmitButton = styled.button`
   margin: 10px;
   border: 1px solid rgba(0, 245, 255, 0.1);
   border-radius: 7px;
-  background: linear-gradient(
-    336deg,
-    rgba(0, 0, 255, 0.15) 13%,
-    rgba(190, 236, 237, 0.75) 40%
-  );
-  color: black;
+  background: black;
+  color: white;
   font-size: 1.25rem;
-  font-family: "Abril Fatface";
-  box-shadow: 3px 5px 20px lightgray;
+  font-weight: 700;
+  font-family: "Noto Sans";
+  border:1px solid white;
 
   :hover {
-    box-shadow: 7px 7px 10px black;
+    box-shadow: 5px 5px 16px lightcyan;
     cursor: pointer;
-
   }
 `;
 
@@ -29,13 +25,15 @@ const SideBarContainer = styled.div`
     margin-right: auto;
     min-height: 87vh;
     position: fixed;
+    color: white;
+    background: rgb(54, 61, 61);
   }
   @media (max-width: 768px) {
     display: none;
   }
 
   > h2 {
-    font-family: "Abril Fatface";
+    font-family: "Noto Sans";
     text-align: center;
     font-size: 1.75rem;
     padding: 10px;
@@ -49,7 +47,8 @@ const AddTodoFormContainer = styled.form`
   padding-top: 50px;
   > label {
     margin: none;
-    font-family: "Abril Fatface";
+    font-family: "Noto Sans";
+    font-weight: 700;
     font-size: 1.15rem;
   }
   > input {
@@ -73,4 +72,4 @@ const AddTodoFormContainer = styled.form`
   }
 `;
 
-export { SideBarContainer, AddTodoFormContainer,StyledSubmitButton };
+export { SideBarContainer, AddTodoFormContainer, StyledSubmitButton };

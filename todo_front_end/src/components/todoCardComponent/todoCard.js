@@ -28,6 +28,13 @@ const TodoCard = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  /**
+   *
+   * @param {*} id
+   * delete toDo takes in a todo id
+   * to make a DELETE request using axios
+   */
+
   const deleteTodo = (id) => {
     setLoading(true);
     const stringedId = id.toString();
@@ -43,6 +50,13 @@ const TodoCard = ({
       });
   };
 
+  /**
+   *
+   * @param {*} id
+   *  completetoDo takes in a todo id
+   * to make a post request using axios
+   */
+
   const completeTodo = (id) => {
     setLoading(true);
     const stringedId = id.toString();
@@ -56,10 +70,12 @@ const TodoCard = ({
       .finally(() => {
         setLoading(false);
       });
-
-    console.log(apiUrl);
-    console.log(userObjects);
   };
+
+  /**
+   * showAndHideDescription toggles the
+   * state shown, to determine if details are visible
+   */
 
   const showAndHideDescription = () => {
     setShown(!shown);
@@ -73,13 +89,19 @@ const TodoCard = ({
         <CardHeader>{title}</CardHeader>
         {shown ? (
           <ExpandedDescriptionContainer>
-            <DropDownButtonContainer onClick={showAndHideDescription} type="button">
+            <DropDownButtonContainer
+              onClick={showAndHideDescription}
+              type="button"
+            >
               <CollapseButton />
             </DropDownButtonContainer>
             <span>{description}</span>
           </ExpandedDescriptionContainer>
         ) : (
-          <DropDownButtonContainer onClick={showAndHideDescription} type="button">
+          <DropDownButtonContainer
+            onClick={showAndHideDescription}
+            type="button"
+          >
             <ExpandButton />
           </DropDownButtonContainer>
         )}

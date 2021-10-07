@@ -13,6 +13,13 @@ const SidebarComponent = () => {
     due_date: ""
   });
 
+  /**
+   * 
+   * @param {*} event 
+   * takes an event, in this case keystrokes
+   * to update formData value based on input value
+   */
+
   const handleTitleInputChange = (event) => {
     event.persist();
     setFormData((values) => ({
@@ -20,6 +27,13 @@ const SidebarComponent = () => {
       title: event.target.value
     }));
   };
+
+   /**
+   * 
+   * @param {*} event 
+   * takes an event, in this case keystrokes
+   * to update formData value based on input value
+   */
   const handleDescriptionInputChange = (event) => {
     event.persist();
     setFormData((values) => ({
@@ -27,6 +41,13 @@ const SidebarComponent = () => {
       description: event.target.value
     }));
   };
+
+   /**
+   * 
+   * @param {*} event 
+   * takes an event, in this case keystrokes
+   * to update formData value based on input value
+   */
   const handleDueDateInputChange = (event) => {
     event.persist();
     setFormData((values) => ({
@@ -34,6 +55,12 @@ const SidebarComponent = () => {
       due_date: event.target.value
     }));
   };
+
+  /**
+   * handle submit makes a post request using form data
+   * for the creation of new todo, at the moment CORS blocks 
+   * application/json using text/plain instead
+   */
 
   const handleSubmit = () => {
     const headers = {
@@ -80,7 +107,7 @@ const SidebarComponent = () => {
           value={formData.due_date}
           onChange={handleDueDateInputChange}
         />
-        <StyledSubmitButton onClick={handleSubmit}>click me</StyledSubmitButton>
+        <StyledSubmitButton onClick={handleSubmit}>Add ToDo</StyledSubmitButton>
       </AddTodoFormContainer>
     </SideBarContainer>
   );

@@ -67,6 +67,7 @@ class TodoController {
     return new Promise((resolve, _) => {
       let newTodo = {
         id: Math.floor(Math.random() + Math.random() * 100 + 10),
+        completed: false,
         ...todoData
       };
       data.push(newTodo);

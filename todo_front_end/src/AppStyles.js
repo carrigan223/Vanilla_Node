@@ -4,11 +4,19 @@ const AppContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, .7) 76%,
+    rgba(190, 236, 237, 0.35) 170%
+  );
+  height: 100vh;
+
 `;
 
 const TodoSection = styled.div`
   display: flex;
   flex-direction: column;
+
 
   @media (min-width: 768px) {
     flex-direction: row;

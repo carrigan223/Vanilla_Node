@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
-  background: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
   background: linear-gradient(
     356deg,
-    rgba(255, 255, 255, 1) 36%,
-    rgba(190, 236, 237, 1) 100%
+    rgba(0, 0, 0, .8) 25%,
+    rgba(190, 236, 237, .7) 120%
   );
-  color: black;
-  box-shadow: 0px 7px 30px lightgray;
+  color: whitesmoke;
+  box-shadow: 0px 7px 70px gray;
   width: 100vw;
   height: 14vh;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   /* margin-bottom: 2rem; */
-  font-family: "Abril Fatface";
-  font-size: 1.25rem;
+  font-family: "Noto Sans";
+  font-size: 1.55rem;
   border-bottom: 3px solid black;
   position: sticky;
   top: 0;
@@ -25,11 +25,18 @@ const HeaderContainer = styled.header`
 const AppTitle = styled.h1`
   margin: 0;
   font-size: 4rem;
-  text-shadow: 5px 4px 3px grey;
+  font-weight: 700;
   position: fixed;
   letter-spacing: 13px;
   color: white;
-  -webkit-text-stroke: 0.5px grey;
+  border: 2px solid white;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  background: black;
+  padding: 5px;
+  box-shadow: 3px 3px 2px white;
+  /* -webkit-text-stroke: 2px rgba(93, 102, 102, 1);
+  text-shadow: 3px 3px 2px lightcyan; */
 `;
 
 const TodaysDate = styled.span`

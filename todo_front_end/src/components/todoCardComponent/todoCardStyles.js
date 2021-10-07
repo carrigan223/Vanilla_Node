@@ -9,7 +9,7 @@ const DeleteButtonContainer = styled.div`
 `;
 
 const DeleteButton = styled.button`
-  font-family: "Abril Fatface";
+  font-family: "Noto Sans";
   font-size: 1rem;
   background: black;
   border-radius: 100%;
@@ -30,6 +30,7 @@ const DeleteButton = styled.button`
 const TodoCardContainer = styled.div`
   display: flex;
   text-align: center;
+  color: black;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -37,13 +38,12 @@ const TodoCardContainer = styled.div`
   margin-top: auto;
   margin: 10px 5px;
   border-radius: 13px;
-  border: 1px solid lightgrey;
-  box-shadow: 2px 3px 15px lightgrey;
+  border: 2px solid black;
   background: rgb(255, 255, 255);
   background: linear-gradient(
-    356deg,
-    rgba(255, 255, 255, 1) 66%,
-    rgba(190, 236, 237, 0.35) 100%
+    336deg,
+    rgba(250, 250, 250, 1) 66%,
+    rgba(190, 236, 237, 0.35) 110%
   );
 
   @media (min-width: 768px) {
@@ -61,14 +61,14 @@ const TodoCardContainer = styled.div`
 `;
 
 const CardHeader = styled.h2`
-  font-family: "Abril Fatface";
+  font-family: "Noto Sans";
 `;
 
 const Checkmark = styled(FaCheckCircle)`
   color: darkgreen;
   box-shadow: 2px 2px 10px black;
   border-radius: 33px;
-  border: 3px solid white;
+  border: 3px solid green;
 
   :hover {
     box-shadow: 2px 2px 10px green;
@@ -79,7 +79,7 @@ const Exclamation = styled(FaExclamationCircle)`
   color: red;
   box-shadow: 2px 2px 10px black;
   border-radius: 33px;
-  border: 3px solid white;
+  border: 3px solid red;
   :hover {
     box-shadow: 2px 2px 10px red;
   }
