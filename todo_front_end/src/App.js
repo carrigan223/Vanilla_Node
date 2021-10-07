@@ -58,8 +58,6 @@ const App = () => {
     dateSetAndFormat(Date.now());
   }, []);
 
-  console.log(todos);
-  console.log(date);
 
   return (
     <AppContainer>

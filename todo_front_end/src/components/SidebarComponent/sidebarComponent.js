@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import {
   SideBarContainer,
-  AddTodoFormContainer
+  AddTodoFormContainer,
+  StyledSubmitButton
 } from "./sidebarComponentStyles";
-import SubmitButton from "../submitButtonComponent/submitButton";
 import axios from "axios";
 
 const SidebarComponent = () => {
@@ -35,25 +35,18 @@ const SidebarComponent = () => {
     }));
   };
 
-  const handleSubmit = async () => {
-    // store the states in the form data
-    const loginFormData = new FormData();
-    loginFormData.append("title", formData.title);
-    loginFormData.append("description", formData.description);
-    loginFormData.append("due_date", formData.due_date);
-
-    try {
-      // make axios post request
-      const response = await axios({
-        method: "post",
-        url: "http://localhost:5000/api/todos",
-        data: loginFormData,
-        headers: { "Content-Type": "multipart/form-data" }
+  const handleSubmit = () => {
+    const headers = {
+      "Content-Type": "text/plain"
+    };
+    axios
+      .post("http://localhost:5000/api/todos", formData, { headers: headers })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -87,7 +80,7 @@ const SidebarComponent = () => {
           value={formData.due_date}
           onChange={handleDueDateInputChange}
         />
-        <SubmitButton onClick={() => handleSubmit()} />
+        <StyledSubmitButton onClick={handleSubmit}>click me</StyledSubmitButton>
       </AddTodoFormContainer>
     </SideBarContainer>
   );

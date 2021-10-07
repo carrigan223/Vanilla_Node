@@ -11,13 +11,15 @@ const server = http.createServer(async (req, res) => {
   //using a wildcard to allow everything not prod ready
   const headers = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "*",
-    "Access-Control-Max-Age": 2592000 // 30 days in milliseconds
+    "Access-Control-Allow-Methods": "GET,POST,DELETE",
+    "Access-Control-Max-Age": 2592000, // 30 days in milliseconds
+    "Access-Control-Request-Headers": "Content-Type"
   };
 
   //catching the pre-flight OPTIONS response
   //and and responding to authenticate the next request
   if (req.method === "OPTIONS") {
+    console.log('options')
     res.writeHead(204, headers);
     res.end();
     return;
@@ -78,10 +80,7 @@ const server = http.createServer(async (req, res) => {
       res.end(JSON.stringify({ message: error }));
     }
     ///api/todos/:id : UPDATE
-  } else if (
-    req.url.match(/\/api\/todos\/([0-9]+)/) &&
-    req.method === "POST"
-  ) {
+  } else if (req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "POST") {
     try {
       const id = req.url.split("/")[3];
       let updated_todo = await new TodoController().updateTodoStatus(id);
