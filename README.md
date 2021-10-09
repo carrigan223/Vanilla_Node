@@ -20,7 +20,8 @@ This is a simple node.js API built with vanilla JavaScript without the use of fr
 `{
 	"title": "Task To Be Completed",
     "description": "Task Description",
-    "completed": false
+    "completed": false,
+    "due_date: "01/01/22"
 }`
 
 ---
